@@ -4,73 +4,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOID Studio | Cyber Design Lab</title>
+<title>VOID Studio</title>
 
 <style>
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background: #080810;
-    color: #f1f1f5;
+    background: #09090f;
+    color: #fff;
     font-family: Arial, sans-serif;
 }
 
 header {
     padding: 20px;
-    background: #11111c;
-    border-bottom: 1px solid #35244e;
+    border-bottom: 1px solid #242435;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header h2 {
-    color: #b78aff;
-    letter-spacing: 2px;
+.logo {
+    color: #b66cff;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 3px;
 }
 
 .status {
-    color: #4ade80;
+    color: #00ff9d;
     font-size: 12px;
 }
 
-.layout {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 20px;
+.container {
+    max-width: 1100px;
+    margin: auto;
     padding: 20px;
+}
+
+h1 {
+    margin: 20px 0 10px;
+    font-size: 28px;
+}
+
+.subtitle {
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .panel {
-    background: #11111b;
-    border: 1px solid #29243c;
-    padding: 20px;
+    background: #11111c;
+    border: 1px solid #29293b;
     border-radius: 12px;
+    padding: 20px;
 }
 
-.panel h3 {
-    color: #b78aff;
-    margin-bottom: 18px;
+.panel h2 {
+    color: #bb77ff;
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    font-size: 13px;
     color: #aaa;
+    font-size: 13px;
     margin: 15px 0 7px;
 }
 
 input, textarea, select {
     width: 100%;
-    padding: 11px;
+    padding: 12px;
     background: #080810;
-    color: white;
-    border: 1px solid #37304c;
+    border: 1px solid #333348;
     border-radius: 7px;
+    color: white;
+    outline: none;
 }
 
 textarea {
@@ -78,108 +96,107 @@ textarea {
     min-height: 100px;
 }
 
+input:focus, textarea:focus, select:focus {
+    border-color: #a855f7;
+}
+
 button {
-    padding: 11px 15px;
-    border: 1px solid #9560db;
-    background: #25153b;
-    color: white;
+    border: none;
     border-radius: 7px;
+    padding: 12px 15px;
+    background: #9333ea;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
-    margin-top: 12px;
+    margin-top: 15px;
 }
 
 button:hover {
-    background: #6b35a5;
+    background: #a855f7;
 }
 
 .preview {
-    min-height: 550px;
-    border: 1px solid #7541a8;
+    min-height: 400px;
+    background: #050509;
+    border: 1px solid #29293b;
     border-radius: 12px;
     padding: 25px;
-    background:
-        radial-gradient(circle at top, #24143d, #080810 65%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.notice {
-    width: 100%;
-    max-width: 600px;
     text-align: center;
-}
-
-.logo {
-    width: 100px;
-    height: 100px;
-    margin: auto auto 20px;
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 0 25px var(--accent);
 }
 
-.logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.preview h2 {
+    margin: 20px 0;
+    font-size: 26px;
 }
 
-.logo span {
-    font-size: 28px;
-    font-weight: bold;
-    color: var(--accent);
-}
-
-.notice h1 {
-    font-size: clamp(24px, 5vw, 48px);
-    margin-bottom: 15px;
-    color: var(--accent);
-    text-shadow: 0 0 15px var(--accent);
-    overflow-wrap: anywhere;
-}
-
-.notice p {
+.preview p {
+    color: #ccc;
     line-height: 1.8;
     white-space: pre-wrap;
-    overflow-wrap: anywhere;
 }
 
-.tag {
-    color: var(--accent);
-    font-size: 12px;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
+.preview-logo {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 15px auto;
+    display: none;
+    object-fit: contain;
+}
+
+.preview audio {
+    width: 100%;
+    margin-top: 25px;
 }
 
 .clock {
     margin-top: 25px;
     color: #888;
+    font-size: 13px;
 }
 
-#previewAudio {
-    width: 100%;
-    margin-top: 20px;
+.purple { --accent: #b45cff; }
+.red { --accent: #ff4444; }
+.blue { --accent: #00bfff; }
+.green { --accent: #00ff99; }
+
+.preview {
+    border-color: var(--accent, #b45cff);
+}
+
+.preview h2 {
+    color: var(--accent, #b45cff);
+}
+
+.glow {
+    text-shadow: 0 0 15px var(--accent);
+}
+
+.fade {
+    animation: fade 2s infinite alternate;
+}
+
+@keyframes fade {
+    from { opacity: .4; }
+    to { opacity: 1; }
+}
+
+.terminal {
+    font-family: monospace;
+    color: var(--accent);
 }
 
 footer {
     text-align: center;
-    color: #777;
-    padding: 20px;
+    color: #555;
+    padding: 30px;
     font-size: 12px;
 }
 
 @media(max-width:700px) {
-    .layout {
+    .grid {
         grid-template-columns: 1fr;
-    }
-
-    .preview {
-        min-height: 450px;
     }
 }
 </style>
@@ -188,132 +205,186 @@ footer {
 <body>
 
 <header>
-    <h2>VOID STUDIO</h2>
-    <span class="status">● LOCAL LAB</span>
+    <div class="logo">VOID STUDIO</div>
+    <div class="status">● LOCAL DEMO</div>
 </header>
 
-<div class="layout">
+<div class="container">
 
-    <!-- EDITOR -->
-    <section class="panel">
+    <h1>Design Studio</h1>
+    <p class="subtitle">
+        Create and preview your own cyber-themed designs.
+    </p>
 
-        <h3>Design Editor</h3>
+    <div class="grid">
 
-        <label>Display Name</label>
-        <input id="nameInput" value="VOID//SYSTEM">
+        <!-- EDITOR -->
 
-        <label>Custom Message</label>
-        <textarea id="messageInput">Welcome to my cybersecurity design lab.
+        <div class="panel">
 
-This is a visual simulation.
-No real systems are accessed.</textarea>
+            <h2>⚙️ Customization</h2>
 
-        <label>Accent Color</label>
-        <select id="colorInput">
-            <option value="#b78aff">Purple Neon</option>
-            <option value="#ff3b5c">Red Neon</option>
-            <option value="#00e5ff">Cyan Neon</option>
-            <option value="#39ff88">Green Neon</option>
-            <option value="#ffb020">Amber Neon</option>
-        </select>
+            <label>Title</label>
+            <input id="titleInput"
+                   value="VOID SYSTEM">
 
-        <label>Upload Logo</label>
-        <input type="file" id="logoInput" accept="image/*">
+            <label>Message</label>
+            <textarea id="messageInput">Welcome to my creative cyber demo.
 
-        <label>Upload Audio (Optional)</label>
-        <input type="file" id="audioInput" accept="audio/*">
+This is a visual simulation created for learning and design purposes.</textarea>
 
-        <button onclick="resetDesign()">Reset Design</button>
+            <label>Logo</label>
+            <input type="file"
+                   id="logoInput"
+                   accept="image/*">
 
-    </section>
+            <label>Theme</label>
+            <select id="themeInput">
+                <option value="purple">Purple</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+            </select>
 
-    <!-- PREVIEW -->
-    <section class="preview" id="preview">
+            <label>Animation</label>
+            <select id="animationInput">
+                <option value="glow">Neon Glow</option>
+                <option value="fade">Fade</option>
+                <option value="terminal">Terminal</option>
+                <option value="none">None</option>
+            </select>
 
-        <div class="notice">
+            <label>Background Audio</label>
+            <input type="file"
+                   id="audioInput"
+                   accept="audio/*">
 
-            <div class="tag">LOCAL SIMULATION</div>
+            <button onclick="updatePreview()">
+                UPDATE PREVIEW
+            </button>
 
-            <div class="logo" id="logo">
-                <span>VS</span>
-            </div>
-
-            <h1 id="previewName">VOID//SYSTEM</h1>
-
-            <p id="previewMessage">
-Welcome to my cybersecurity design lab.
-
-This is a visual simulation.
-No real systems are accessed.
-            </p>
-
-            <div class="clock" id="clock"></div>
-
-            <audio id="previewAudio" controls hidden></audio>
+            <button onclick="resetDesign()"
+                    style="background:#333">
+                RESET
+            </button>
 
         </div>
 
-    </section>
+        <!-- PREVIEW -->
+
+        <div class="panel">
+
+            <h2>👁 Live Preview</h2>
+
+            <div class="preview purple" id="preview">
+
+                <img id="previewLogo"
+                     class="preview-logo">
+
+                <h2 id="previewTitle" class="glow">
+                    VOID SYSTEM
+                </h2>
+
+                <p id="previewMessage">
+                    Welcome to my creative cyber demo.
+                </p>
+
+                <div class="clock" id="clock">
+                    00:00:00
+                </div>
+
+                <audio id="audioPlayer"
+                       controls
+                       style="display:none">
+                </audio>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
 <footer>
-    VOID STUDIO • CYBER DESIGN LAB • LOCAL PREVIEW ONLY
+    VOID STUDIO • LOCAL DESIGN SIMULATOR
 </footer>
 
 <script>
 
-/* Name */
+const titleInput =
+    document.getElementById("titleInput");
 
-const nameInput = document.getElementById("nameInput");
+const messageInput =
+    document.getElementById("messageInput");
 
-nameInput.addEventListener("input", () => {
-    document.getElementById("previewName").textContent =
-        nameInput.value || "VOID//SYSTEM";
-});
+const themeInput =
+    document.getElementById("themeInput");
 
-/* Message */
+const animationInput =
+    document.getElementById("animationInput");
 
-document.getElementById("messageInput")
-.addEventListener("input", function() {
+const preview =
+    document.getElementById("preview");
 
-    document.getElementById("previewMessage")
-    .textContent = this.value;
+const previewTitle =
+    document.getElementById("previewTitle");
 
-});
+const previewMessage =
+    document.getElementById("previewMessage");
 
-/* Theme */
+const previewLogo =
+    document.getElementById("previewLogo");
 
-document.getElementById("colorInput")
-.addEventListener("change", function() {
+const audioPlayer =
+    document.getElementById("audioPlayer");
 
-    document.getElementById("preview")
-    .style.setProperty("--accent", this.value);
 
-});
+function updatePreview() {
 
-/* Logo */
+    previewTitle.textContent =
+        titleInput.value || "VOID SYSTEM";
+
+    previewMessage.textContent =
+        messageInput.value;
+
+    preview.className =
+        "preview " + themeInput.value;
+
+    previewTitle.className = "";
+
+    const animation =
+        animationInput.value;
+
+    if(animation === "glow") {
+        previewTitle.classList.add("glow");
+    }
+
+    if(animation === "fade") {
+        previewTitle.classList.add("fade");
+    }
+
+    if(animation === "terminal") {
+        previewTitle.classList.add("terminal");
+    }
+}
+
+
+// Logo upload
 
 document.getElementById("logoInput")
-.addEventListener("change", function() {
+.addEventListener("change", function(event) {
 
-    const file = this.files[0];
+    const file = event.target.files[0];
 
-    if (!file) return;
+    if(!file) return;
 
     const reader = new FileReader();
 
-    reader.onload = function(event) {
+    reader.onload = function(e) {
 
-        const logo = document.getElementById("logo");
-
-        logo.innerHTML = "";
-
-        const img = document.createElement("img");
-
-        img.src = event.target.result;
-
-        logo.appendChild(img);
+        previewLogo.src = e.target.result;
+        previewLogo.style.display = "block";
 
     };
 
@@ -321,29 +392,43 @@ document.getElementById("logoInput")
 
 });
 
-/* Audio */
+
+// Audio upload
 
 document.getElementById("audioInput")
-.addEventListener("change", function() {
+.addEventListener("change", function(event) {
 
-    const file = this.files[0];
+    const file = event.target.files[0];
 
-    if (!file) return;
+    if(!file) return;
 
-    const audio = document.getElementById("previewAudio");
+    audioPlayer.src =
+        URL.createObjectURL(file);
 
-    audio.src = URL.createObjectURL(file);
-
-    audio.hidden = false;
+    audioPlayer.style.display = "block";
 
 });
 
-/* Clock */
+
+// Live update
+
+titleInput.addEventListener("input", updatePreview);
+
+messageInput.addEventListener("input", updatePreview);
+
+themeInput.addEventListener("change", updatePreview);
+
+animationInput.addEventListener("change", updatePreview);
+
+
+// Clock
 
 function updateClock() {
 
+    const now = new Date();
+
     document.getElementById("clock")
-    .textContent = new Date().toLocaleString();
+    .textContent = now.toLocaleTimeString();
 
 }
 
@@ -351,13 +436,31 @@ setInterval(updateClock, 1000);
 
 updateClock();
 
-/* Reset */
+
+// Reset
 
 function resetDesign() {
 
-    location.reload();
+    titleInput.value = "VOID SYSTEM";
+
+    messageInput.value =
+        "Welcome to my creative cyber demo.\n\nThis is a visual simulation created for learning and design purposes.";
+
+    themeInput.value = "purple";
+
+    animationInput.value = "glow";
+
+    previewLogo.style.display = "none";
+
+    audioPlayer.pause();
+    audioPlayer.removeAttribute("src");
+    audioPlayer.style.display = "none";
+
+    updatePreview();
 
 }
+
+updatePreview();
 
 </script>
 
